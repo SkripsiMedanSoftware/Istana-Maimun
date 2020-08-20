@@ -19,12 +19,14 @@ class Page extends CI_Controller {
 			$id = $this->m_page->view($id);
 
 			if (!empty($id)) {
-				$this->load->view('v_page', $data);
+				$data['pages'] = $id;
+				$this->load->view('admin/v_page', $data);
 			} else {
 				show_404();
 			}
 		} else {
-			$this->load->view('v_page', $data);
+			$data['pages'] = $this->m_page->list();
+			$this->load->view('admin/v_page', $data);
 		}
 	}
 }
