@@ -44,7 +44,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Menu Utama</li>
-        <li class="active">
+        <li>
           <a href="<?php echo base_url().'admin/dashboard'?>">
             <i class="fa fa-archive"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -73,42 +73,13 @@
         </li>
         
         <li>
-          <a href="<?php echo base_url().'admin/tentang'?>">
-            <i class="fa fa-file-text-o"></i> <span>Tentang</span>
+          <a href="<?php echo base_url().'admin/page'?>">
+            <i class="fa fa-file-text-o"></i> <span>Halaman</span>
             <span class="pull-right-container">
               <small class="label pull-right"></small>
             </span>
           </a>
         </li>
-        <li>
-          <a href="<?php echo base_url().'admin/sejarah'?>">
-            <i class="fa fa-shield"></i> <span>Sejarah</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/fasilitas'?>">
-            <i class="fa fa-institution"></i> <span>Fasilitas</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/acara'?>">
-            <i class="fa fa-gift"></i> <span>Acara</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        
-                
         <li>
           <a href="<?php echo base_url().'admin/inbox'?>">
             <i class="fa fa-envelope"></i> <span>Inbox</span>
