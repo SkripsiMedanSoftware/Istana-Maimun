@@ -488,9 +488,9 @@
                                 <input type="hidden" name="id" value="<?php echo $id;?>"/>
                                 <input type="hidden" value="<?php echo $photo;?>" name="gambar">
                                     <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-1 control-label">JUDUL</label>
+                                        <label for="inputJudul" class="col-sm-1 control-label">JUDUL</label>
                                         <div class="col-sm-8">
-                                            <input type="text" name="xjudul" value="<?php echo $judul;?>" class="form-control" id="inputUserName" placeholder="JUDUL" required>
+                                            <input type="text" name="xjudul" value="<?php echo $judul;?>" class="form-control" id="inputJudul" placeholder="JUDUL" required>
                                         </div>
                                     </div>
 
@@ -502,16 +502,19 @@
                                     </div>  
 
                                     <div class="form-group">
-                                    <label for="textarea" class="col-sm-8">DESKRIPSI</label>
-                                    <div class="col-sm-8">
-                                    <justify><textarea name="xdeskripsi" value="<?php echo $deskripsi;?>" class="form-control"cols="40" rows="5" id="textarea" onkeyup="showText()"></textarea></justify>
-                                    <div id="show-text"></div>
+                                    <label for="textarea" class="form-control">DESKRIPSI</label>
+                                    <div class="col-sm-12">
+                                    <justify><textarea name="xdeskripsi" class="form-control"cols="40" rows="5" id="content"><?php echo $i['tentang_deskripsi'];?></textarea></justify>
+                                    <div id="show-text" style="margin-top: 2%"></div>
 
                                     <script>
-                                    function showText(){
-                                      var text = $('#content').val();
-                                      $('#show-text').html(nl2br(text));
-                                    }
+                                      function nl2br (str, is_xhtml) {
+                                          if (typeof str === 'undefined' || str === null) {
+                                              return '';
+                                          }
+                                          var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+                                          return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+                                      }
                                   </script>
                                     </div>
                                     
@@ -565,6 +568,7 @@
 
 <!-- jQuery 2.2.3 -->
 <script src="<?php echo base_url().'assets/plugins/jQuery/jquery-2.2.3.min.js'?>"></script>
+<script src="<?php echo base_url().'assets/ckeditor/ckeditor.js' ?>"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url().'assets/bootstrap/js/bootstrap.min.js'?>"></script>
 <!-- DataTables -->
@@ -578,6 +582,18 @@
 <script src="<?php echo base_url().'assets/dist/js/app.min.js'?>"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?php echo base_url().'assets/dist/js/demo.js'?>"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  CKEDITOR.replace( 'content' );
+   CKEDITOR.instances.content.on('change', function(e) {
+      var self = this;
+
+      setTimeout(function() {
+          $('#show-text').html(nl2br(self.getData()));
+      }, 10);
+  });
+})
+</script>
 <script type="text/javascript" src="<?php echo base_url().'assets/plugins/toast/jquery.toast.min.js'?>"></script>
 <!-- page script -->
 <?php if($this->session->flashdata('msg')=='error'):?>
