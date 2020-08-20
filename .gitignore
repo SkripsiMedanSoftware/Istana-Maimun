@@ -1,0 +1,5 @@
+composer.lock
+application/logs/filemanager
+uploads/*
+!uploads/index.html
+assets/images/*

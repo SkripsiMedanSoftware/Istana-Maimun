@@ -5,6 +5,11 @@ class Filemanager extends CI_Controller {
 
 	public function index()
 	{
+		$this->load->view('filemanager');
+	}
+
+	public function api()
+	{
 		$config = $this->load->config('filemanager', TRUE);
 		$root = FCPATH.'uploads/';
 		$app = new RFM\Application();

@@ -492,13 +492,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-1   control-label">PHOTO</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" name="filefoto"/>
-                                        </div>
-                                    </div>  
-
-                                    <div class="form-group">
                                     <label for="textarea" class="col-sm-8">DESKRIPSI</label>
                                     <div class="col-sm-12">
                                     <justify><textarea name="xdeskripsi" class="form-control"cols="40" rows="5" id="content"><?php echo $deskripsi;?></textarea></justify>
@@ -574,7 +567,7 @@
       return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
   }
 $(document).ready(function(){
-  CKEDITOR.replace( 'content' );
+  CKEDITOR.replace( 'content', { filebrowserBrowseUrl:'<?php echo base_url('filemanager') ?>' } );
    CKEDITOR.instances.content.on('change', function(e) {
       var self = this;
 

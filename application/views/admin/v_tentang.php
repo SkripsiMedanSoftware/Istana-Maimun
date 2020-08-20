@@ -495,13 +495,6 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="inputUserName" class="col-sm-1   control-label">PHOTO</label>
-                                        <div class="col-sm-8">
-                                            <input type="file" name="filefoto"/>
-                                        </div>
-                                    </div>  
-
-                                    <div class="form-group">
                                     <label for="textarea" class="form-control">DESKRIPSI</label>
                                     <div class="col-sm-12">
                                     <justify><textarea name="xdeskripsi" class="form-control"cols="40" rows="5" id="content"><?php echo $i['tentang_deskripsi'];?></textarea></justify>
@@ -584,7 +577,7 @@
 <script src="<?php echo base_url().'assets/dist/js/demo.js'?>"></script>
 <script type="text/javascript">
 $(document).ready(function(){
-  CKEDITOR.replace( 'content' );
+  CKEDITOR.replace( 'content', { filebrowserBrowseUrl:'<?php echo base_url('filemanager') ?>' } );
    CKEDITOR.instances.content.on('change', function(e) {
       var self = this;
 
