@@ -92,7 +92,7 @@ class Acara extends CI_Controller{
 	                        $photo=$gbr['file_name'];
 	                        $id=$this->input->post('id');
 							$judul=strip_tags($this->input->post('xjudul'));
-							$deskripsi=strip_tags($this->input->post('xdeskripsi'));
+							$deskripsi=$this->input->post('xdeskripsi');
 							
 
 							$this->m_acara->update_acara($id,$judul,$deskripsi,$photo);
@@ -107,7 +107,7 @@ class Acara extends CI_Controller{
 	            }else{
 							$id=$this->input->post('id');
 							$judul=strip_tags($this->input->post('xjudul'));
-							$deskripsi=strip_tags($this->input->post('xdeskripsi'));
+							$deskripsi=$this->input->post('xdeskripsi');
 
 
 							$this->m_acara->update_acara_tanpa_img($id,$judul,$deskripsi);
