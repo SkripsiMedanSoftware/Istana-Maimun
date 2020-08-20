@@ -5,6 +5,7 @@ class Tiket extends CI_Controller{
             $url=base_url('tiket');
 
     $this->load->model('m_tiket');
+    $this->load->model('m_transaksi');
     $this->load->library('upload');
   }
 
@@ -15,57 +16,63 @@ class Tiket extends CI_Controller{
   }
 
   function simpan_tiket(){
-    $config['upload_path'] = '.assets/images/'; //path folder
+    $config['upload_path'] = './assets/images/'; //path folder
       $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
 
     $this->upload->initialize($config);
+    $gbr = NULL;
               if(!empty($_FILES['filefoto']['name']))
               {
                   if ($this->upload->do_upload('filefoto'))
                   {
-                          $gbr = $this->upload->data();
-                          //Compress Image
-                          $config['image_library']='gd2';
-                          $config['source_image']='./assets/images/'.$gbr['file_name'];
-                          $config['create_thumb']= FALSE;
-                          $config['maintain_ratio']= FALSE;
-                          $config['quality']= '60%';
-                          $config['width']= 300;
-                          $config['height']= 300;
-                          $config['new_image']= 'assets/images/'.$gbr['file_name'];
-                          $this->load->library('image_lib', $config);
-                          $this->image_lib->resize();
-
-                          $bukti=$gbr['file_name'];
-                          $nama=$this->input->post('xnama');
-                          $kontak=$this->input->post('xkontak');
-                          $tanggal=$this->input->post('xtanggal');
-                          $dewasa=$this->input->post('xdewasa');
-                          $pelajar=$this->input->post('xpelajar');
-
-              $this->m_tiket->simpan_tiket($bukti,$nama,$kontak,$tanggal,$dewasa,$pelajar);
-              echo $this->session->set_flashdata('msg','Terima Kasih, Data Pemesanan Sudah Terkirim');
-              redirect('tiket');
-          }else{
+                    $gbr = $this->upload->data()['file_name'];
+                    
+                  }
+                  else
+                  {
                       echo $this->session->set_flashdata('msg','warning');
                       redirect('tiket');
                   }
                    
-              }else{
-                          $id=$this->input->post('id');
-                          $bukti=$gbr['file_name'];
-                          $nama=$this->input->post('xnama');
-                          $kontak=$this->input->post('xkontak');
-                          $tanggal=$this->input->post('xtanggal');
-                          $dewasa=$this->input->post('xdewasa');
-                          $pelajar=$this->input->post('xpelajar');
+              }
+              
+              //Compress Image
+              // $config['image_library']='gd2';
+              // $config['source_image']='./assets/images/'.$gbr;
+              // $config['create_thumb']= FALSE;
+              // $config['maintain_ratio']= FALSE;
+              // $config['quality']= '60%';
+              // $config['width']= 300;
+              // $config['height']= 300;
+              // $config['new_image']= 'assets/images/'.$gbr;
+              // $this->load->library('image_lib', $config);
+              // $this->image_lib->resize();
 
-          $this->m_tiket->simpan_tiket_tanpa_img($id,$bukti,$nama,$kontak,$tanggal,$dewasa,$pelajar);
-          echo $this->session->set_flashdata('msg','Terima Kasih, Data Pemesanan Sudah Terkirim');
-          redirect('tiket');
-        }
-        
+              // $bukti=$gbr;
+              // $nama=$this->input->post('xnama');
+              // $kontak=$this->input->post('xkontak');
+              // $tanggal=$this->input->post('xtanggal');
+              // $dewasa=$this->input->post('xdewasa');
+              // $pelajar=$this->input->post('xpelajar');
+
+              // $this->m_tiket->simpan_tiket($bukti,$nama,$kontak,$tanggal,$dewasa,$pelajar);
+
+              $harga_tiket_dewasa = $this->m_tiket->harga_tiket_dewasa();
+              $harga_tiket_pelajar = $this->m_tiket->harga_tiket_pelajar();
+
+              $this->m_transaksi->create(array(
+                'nama' => $this->input->post('xnama'),
+                'kontak' => $this->input->post('xkontak'),
+                'tanggal' => $this->input->post('xtanggal'),
+                'harga_tiket' => ($harga_tiket_pelajar*(int) $this->input->post('xpelajar') + $harga_tiket_dewasa*(int) $this->input->post('xdewasa')),
+                'jumlah_tiket' => ((int) $this->input->post('xdewasa') + (int) $this->input->post('xpelajar')),
+                'dewasa' => (int) $this->input->post('xdewasa'),
+                'pelajar' => (int) $this->input->post('xpelajar'),
+                'bukti_pembayaran' => $gbr
+              ));
+              echo $this->session->set_flashdata('msg','Terima Kasih, Data Pemesanan Sudah Terkirim');
+              redirect('tiket');
   }
 
   /* 

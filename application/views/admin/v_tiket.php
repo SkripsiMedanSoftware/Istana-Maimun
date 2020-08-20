@@ -213,6 +213,9 @@
                 </tbody>
               </table>
             </div>
+            <div class="box-footer">
+              <a class="btn btn-success" href="<?php echo base_url('admin/transaksi') ?>"><i class="fa fa-list-alt"></i> Transaksi</a>
+            </div>
             <!-- /.box-body -->
           </div>
           <!-- /.box -->

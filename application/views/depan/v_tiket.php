@@ -95,7 +95,7 @@
                             <div class="contact-option_rsp">
                                 <h3>Pesan Tiket</h3>
 
-                                <form action="<?php echo site_url('tiket/simpan_tiket');?>" method="post">
+                                <form action="<?php echo site_url('tiket/simpan_tiket');?>" method="post" enctype="multipart/form-data">
                                     <div class="form-group">
                                         <input type="text" class="form-control form-control-sm" placeholder="Nama" name="xnama" required>
                                     </div>

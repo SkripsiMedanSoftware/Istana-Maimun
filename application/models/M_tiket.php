@@ -29,5 +29,20 @@ class M_tiket extends CI_Model{
 		return $hsl;
 	}
 
+	function harga_tiket_dewasa() {
+		$harga = $this->db->get_where('tbl_tiket', array('tiket_golongan' => 'dewasa'));
+		if ($harga->num_rows() > 0) {
+			return $harga->row()->harga_tiket;
+		}
+	}
+
+	function harga_tiket_pelajar() {
+		$this->db->where('tiket_golongan != ', 'dewasa');
+        $harga = $this->db->get('tbl_tiket');
+        if ($harga->num_rows() > 0) {
+			return $harga->row()->harga_tiket;
+		}
+	}
+
 
 }

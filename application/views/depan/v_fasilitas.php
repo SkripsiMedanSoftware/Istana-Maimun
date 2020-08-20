@@ -84,21 +84,8 @@
                 </div>
             </div>
             <div class="row">
-                <?php foreach ($data->result() as $row) : ?>
-                    <div class="col-xs-6 col-sm-8 col-md-10">
-                        <div class="page-image">
-                          <?php if(empty($row->fasilitas_photo)):?>
-                            <img src="<?php echo base_url().'assets/images/blank.png';?>" class="img-fluid" alt="#">
-                          <?php else:?>
-                            <img src="<?php echo base_url().'assets/images/'.$row->fasilitas_photo;?>" class="img" width="300px; alt="#">
-                          <?php endif;?>
-                            
-                        </div>
-                    </div>
-                <?php endforeach;?>
-              </div>
-            <!-- End row -->
-            <p class="page-script"><span><?php echo $row->fasilitas_deskripsi;?></span>
+                <?php echo $data->row()->fasilitas_deskripsi;?>
+            </div>
             <nav><?php echo $page;?></nav>
         </div>
     </section>
