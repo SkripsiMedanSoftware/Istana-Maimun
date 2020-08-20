@@ -163,23 +163,19 @@
       <div class="row">
         <div class="col-xs-12">
           <div class="box">
-
-          
-            </div>
             <!-- /.box-header -->
             <div class="box-body">
               <table id="example1" class="table table-striped" style="font-size:15px;">
                 
-                <tr>
-                    <th style="text-align: center;">BUKTI</th>
-                    <th style="text-align: center">NAMA</th>
-                    <th style="text-align: center">KONTAK</th>
-                    <th style="text-align: center">TANGGAL KEDATANGAN</th>
-                    <th style="text-align: center">DEWASA</th>
-                    <th style="text-align: center">PELAJAR</th>
-
-                    <th style="text-align:center;">Hapus</th>
-                </tr>
+                <thead>
+                  <th style="text-align: center;">BUKTI</th>
+                  <th style="text-align: center">NAMA</th>
+                  <th style="text-align: center">KONTAK</th>
+                  <th style="text-align: center">TANGGAL KEDATANGAN</th>
+                  <th style="text-align: center">DEWASA</th>
+                  <th style="text-align: center">PELAJAR</th>
+                  <th style="text-align:center;">Hapus</th>
+                </thead>
                 
                 <tbody>
                   <?php
