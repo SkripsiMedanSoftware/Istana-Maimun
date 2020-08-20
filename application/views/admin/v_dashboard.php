@@ -145,26 +145,31 @@
     <!-- /.sidebar -->
   </aside>
 
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-        Dashboard
-        <small></small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
-    </section>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="box">
-                   <a href="<?php echo site_url('');?>" ><img class="img" width="1200px;" src="<?php echo base_url().'theme/images/4.jpg'?>"></a> 
-                    </div>
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Dashboard
+    <small></small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+    <li class="active">Dashboard</li>
+  </ol>
+</section>
 
-  <footer class="main-footer">
+<section class="content">
+<div class="row">
+<div class="col-md-12">
+<div class="box">
+  <a href="<?php echo site_url('');?>" ><img class="img" width="100%;" height="780px;" src="<?php echo base_url().'theme/images/4.jpg'?>"></a> 
+</div>
+</section>
+
+
+</div>
+<footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 1.0
     </div>
