@@ -138,83 +138,11 @@
 
 <section class="content">
 <div class="box">
-  <div class="box-body" style="overflow-x: scroll;">
-    <table class="table table-hover table-striped">
-      <thead>
-        <th>No</th>
-        <th>Judul</th>
-        <th>Konten</th>
-        <th>Opsi</th>
-      </thead>
-      <tbody>
-        <?php 
-          $i = 1;
-          foreach ($page as $value) :
-        ?>
-          <tr>
-            <td><?php echo $i ?></td>
-            <td><?php echo $value['judul'] ?></td>
-            <td><?php echo word_limiter($value['konten'], 30, '...') ?></td>
-            <td>
-              <a class="btn btn-sm btn-info" href="<?php echo base_url('home/page/'.$value['id']) ?>" target="_blank">Lihat</a>
-              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?php echo $value['id'] ?>">Edit</a>
-              <a class="btn btn-sm btn-danger" href="<?php echo base_url('admin/page/hapus/'.$value['id']) ?>" target="_blank">Hapus</a>
-            </td>
-          </tr>
-<div class="modal fade" id="modal-edit<?php echo $value['id'] ?>">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Sunting Halaman</h4>
-      </div>
-      <form method="post" action="<?php echo base_url('admin/page/option/'.$value['id']) ?>">
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Judul</label>
-            <input type="text" class="form-control" placeholder="Judul" value="<?php echo $value['judul'] ?>" name="judul">
-          </div>
-          <div class="form-group">
-            <label>Konten</label>
-            <textarea id="content<?php echo $value['id'];?>" name="konten"><?php echo $value['konten'] ?></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
-        </div>
-      </form>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-<script type="text/javascript">
-  function nl2br (str, is_xhtml) {
-      if (typeof str === 'undefined' || str === null) {
-          return '';
-      }
-      var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-  }
-$(document).ready(function(){
-  CKEDITOR.replace( 'content<?php echo $value['id']?>', {
-    filebrowserBrowseUrl: '<?php echo base_url('filemanager') ?>'
-  } );
-   
-})
-</script>
-        <?php 
-        $i++;
-        endforeach; 
-        ?>
-      </tbody>
-    </table>
+  <div class="box-body">
+ 
   </div>
   <div class="box-footer">
-    <a class="btn btn-success" data-toggle="modal" data-target="#modal-add">Tambah Halaman</a>
+    <a class="btn btn-success" href="<?php echo base_url('admin/page') ?>" data-toggle="modal" data-target="#modal-add">Kembali</a>
   </div>
 </div>
 
@@ -233,51 +161,26 @@ $(document).ready(function(){
 
 
 
-<div class="modal fade" id="modal-add">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title">Sunting Halaman</h4>
-      </div>
-      <form method="post" action="<?php echo base_url('admin/page/option/') ?>">
-        <div class="modal-body">
-          <div class="form-group">
-            <label>Judul</label>
-            <input type="text" class="form-control" placeholder="Judul" name="judul">
+ <div class="modal" id="modal-add">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Default Modal</h4>
+              </div>
+              <div class="modal-body">
+                <p>One fine body&hellip;</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+            <!-- /.modal-content -->
           </div>
-          <div class="form-group">
-            <label>Konten</label>
-            <textarea id="content" name="konten" placeholder="Konten"></textarea>
-          </div>
+          <!-- /.modal-dialog -->
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Tutup</button>
-          <button type="submit" class="btn btn-primary">Simpan</button>
-        </div>
-      </form>
-    </div>
-    <!-- /.modal-content -->
-  </div>
-  <!-- /.modal-dialog -->
-</div>
-
-<script type="text/javascript">
-  function nl2br (str, is_xhtml) {
-      if (typeof str === 'undefined' || str === null) {
-          return '';
-      }
-      var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
-      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
-  }
-$(document).ready(function(){
-  CKEDITOR.replace( 'content', {
-    filebrowserBrowseUrl: '<?php echo base_url('filemanager') ?>'
-  } );
-   
-})
-</script>
 <!-- ./wrapper -->
 
 
