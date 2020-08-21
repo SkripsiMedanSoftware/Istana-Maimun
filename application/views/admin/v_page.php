@@ -26,6 +26,10 @@
   <!-- AdminLTE Skins. Choose a skin from the css/skins
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url().'assets/dist/css/skins/_all-skins.min.css'?>">
+
+  <!-- jQuery 2.2.3 -->
+  <script src="<?php echo base_url().'assets/plugins/jQuery/jquery-2.2.3.min.js'?>"></script>
+  <script src="<?php echo base_url().'assets/ckeditor/ckeditor.js' ?>"></script>
   
 
 </head>
@@ -131,10 +135,87 @@
 </section>
 
 <section class="content">
-<div class="row">
-<div class="col-md-12">
 <div class="box">
-  <a href="<?php echo site_url('');?>" ><img class="img" width="100%;" height="780px;" src="<?php echo base_url().'theme/images/4.jpg'?>"></a> 
+  <div class="box-body" style="overflow-x: scroll;">
+    <table class="table table-hover table-striped">
+      <thead>
+        <th>No</th>
+        <th>Judul</th>
+        <th>Konten</th>
+        <th>Opsi</th>
+      </thead>
+      <tbody>
+        <?php 
+          $i = 1;
+          foreach ($page as $value) :
+        ?>
+          <tr>
+            <td><?php echo $i ?></td>
+            <td><?php echo $value['judul'] ?></td>
+            <td><?php echo $value['konten'] ?></td>
+            <td>
+              <a class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-edit<?php echo $value['id'] ?>">edit</a>
+            </td>
+          </tr>
+<div class="modal fade" id="modal-edit<?php echo $value['id'] ?>">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Sunting Halaman</h4>
+      </div>
+      <form method="post" action="<?php echo base_url('admin/page/'.$value['id']) ?>">
+        <div class="modal-body">
+          <div class="form-group">
+            <label>Judul</label>
+            <input type="text" class="form-control" placeholder="Judul" value="<?php echo $value['judul'] ?>">
+          </div>
+          <div class="form-group">
+            <label>Konten</label>
+            <textarea id="content<?php echo $value['id'];?>"><?php echo $value['konten'] ?></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<script type="text/javascript">
+  function nl2br (str, is_xhtml) {
+      if (typeof str === 'undefined' || str === null) {
+          return '';
+      }
+      var breakTag = (is_xhtml || typeof is_xhtml === 'undefined') ? '<br />' : '<br>';
+      return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
+  }
+$(document).ready(function(){
+  CKEDITOR.replace( 'content<?php echo $value['id']?>' );
+   CKEDITOR.instances.content<?php echo $value['id']?>.on('change', function(e) {
+      var self = this;
+
+      setTimeout(function() {
+          $('#show-text').html(nl2br(self.getData()));
+      }, 10);
+  });
+})
+</script>
+        <?php 
+        $i++;
+        endforeach; 
+        ?>
+      </tbody>
+    </table>
+  </div>
+  <div class="box-footer">
+    <a class="btn btn-success" href="<?php echo base_url('admin/page') ?>">Tambah Halaman</a>
+  </div>
 </div>
 </section>
 
@@ -151,8 +232,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 2.2.3 -->
-<script src="<?php echo base_url().'assets/plugins/jQuery/jquery-2.2.3.min.js'?>"></script>
+
 <!-- Bootstrap 3.3.6 -->
 <script src="<?php echo base_url().'assets/bootstrap/js/bootstrap.min.js'?>"></script>
 <!-- FastClick -->
