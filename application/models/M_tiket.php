@@ -44,5 +44,4 @@ class M_tiket extends CI_Model{
 		}
 	}
 
-
 }

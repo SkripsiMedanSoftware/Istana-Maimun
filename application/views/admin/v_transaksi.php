@@ -155,11 +155,11 @@
             <td><?php echo $value['nama'] ?></td>
             <td><?php echo $value['kontak'] ?></td>
             <td><?php echo $value['tanggal'] ?></td>
-            <td><?php echo $value['harga_tiket'] ?></td>
+            <td>Rp.<?php echo number_format($value['harga_tiket'], 0, ',', '.') ?></td>
             <td><?php echo $value['jumlah_tiket'] ?></td>
             <td><?php echo $value['dewasa'] ?></td>
             <td><?php echo $value['pelajar'] ?></td>
-            <td><a href="<?php echo base_url('assets/images/'.$value['bukti_pembayaran']) ?>" target="_blank">Klik Disini</a></td>
+            <td><a href="<?php echo !empty($value['bukti_pembayaran'])?base_url('assets/images/'.$value['bukti_pembayaran']).' target="_blank"':'#' ?>">Klik Disini</a></td>
           </tr>
         <?php 
         $i++;
@@ -169,7 +169,10 @@
     </table>
   </div>
   <div class="box-footer">
-    x
+    Total Pendapatan : Rp.
+    <?php
+    echo number_format((!empty($this->m_transaksi->total_pendapatan()))?$this->m_transaksi->total_pendapatan()->harga_tiket:0, 0, ',', '.');
+    ?>
   </div>
 </div>
 </section>

@@ -52,6 +52,14 @@ class M_transaksi extends CI_Model {
 		return FALSE;
 	}
 
+	public function total_pendapatan() {
+
+		$this->db->select_sum('harga_tiket');
+		$query = $this->db->get('tbl_transaksi_tiket');
+		return $query->row();
+
+	}
+
 }
 
 /* End of file M_transaksi.php */
