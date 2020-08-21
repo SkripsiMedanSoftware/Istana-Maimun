@@ -196,7 +196,9 @@
       return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
   }
 $(document).ready(function(){
-  CKEDITOR.replace( 'content<?php echo $value['id']?>' );
+  CKEDITOR.replace( 'content<?php echo $value['id']?>', {
+    filebrowserBrowseUrl: '<?php echo base_url('filemanager') ?>'
+  } );
    CKEDITOR.instances.content<?php echo $value['id']?>.on('change', function(e) {
       var self = this;
 
