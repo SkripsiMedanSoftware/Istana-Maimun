@@ -155,11 +155,11 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-5">Istana Maimun - <?php echo $page['judul'] ?></h2>
+                <h2 class="mb-5">Istana Maimun - <?php echo (!empty($page))?$page[0]['judul']:'';?></h2>
             </div>
         </div>
         <div class="container">
-            <?php echo $page['konten'];?>
+            <?php echo (!empty($page))?$page[0]['content']:'';?>
         </div>
     </div>
 </section>
