@@ -48,11 +48,17 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo site_url('');?>">Beranda</a>
                                 </li>
-                                <?php foreach ($this->m_page->list() as $value) : ?>
+                                <?php 
+                                if (!empty($this->m_page->list())) :
+                                foreach ($this->m_page->list() as $value) :
+                                ?>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo site_url('home/page/'.$value['id']);?>"><?php echo $value['judul'] ?></a>
                                 </li>
-                                <?php endforeach; ?>
+                                <?php 
+                                endforeach;
+                                endif;
+                                ?>
                                 <li class="nav-item">
                                   <a class="nav-link" href="<?php echo site_url('contact');?>">Kontak</a>
                                 </li>
@@ -164,11 +170,13 @@
                             <h3>Menu Utama</h3>
                            <ul>
                             <li><a href="<?php echo site_url();?>">Beranda</a></li>
+                            <?php if (!empty($this->m_page->list())) : ?>
                             <?php foreach ($this->m_page->list() as $value) : ?>
                             <li class="nav-item">
                                 <li><a href="<?php echo site_url('home/page/'.$value['id']);?>"><?php echo $value['judul'] ?></a></li>
                             </li>
                             <?php endforeach; ?>
+                            <?php endif; ?>
                             <li><a href="<?php echo site_url('contact');?>">Kontak</a></li>
                         </ul>
                         </ul>
