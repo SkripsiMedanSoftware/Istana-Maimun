@@ -48,18 +48,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?php echo site_url('');?>">Beranda</a>
                                 </li>
+                                <?php foreach ($this->m_page->list() as $value) : ?>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('tentang');?>">Tentang</a>
+                                    <a class="nav-link" href="<?php echo site_url('home/page/'.$value['id']);?>"><?php echo $value['judul'] ?></a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('sejarah');?>">Sejarah</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('fasilitas');?>">Fasilitas</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="<?php echo site_url('acara');?>">Acara</a>
-                                </li>
+                                <?php endforeach; ?>
                                 <li class="nav-item">
                                   <a class="nav-link" href="<?php echo site_url('contact');?>">Kontak</a>
                                 </li>
@@ -169,13 +162,15 @@
                     <div class="col-md-3">
                         <div class="sitemap">
                             <h3>Menu Utama</h3>
-                            <ul>
+                           <ul>
                             <li><a href="<?php echo site_url();?>">Beranda</a></li>
-                            <li><a href="<?php echo site_url('tentang');?>">Tentang</a></li>
-                            <li><a href="<?php echo site_url('sejarah');?>">Sejarah </a></li>
-                            <li><a href="<?php echo site_url('fasilitas');?>">Fasilitas</a></li>
-                            <li><a href="<?php echo site_url('acara');?>">Acara</a></li>
+                            <?php foreach ($this->m_page->list() as $value) : ?>
+                            <li class="nav-item">
+                                <li><a href="<?php echo site_url('home/page/'.$value['id']);?>"><?php echo $value['judul'] ?></a></li>
+                            </li>
+                            <?php endforeach; ?>
                             <li><a href="<?php echo site_url('contact');?>">Kontak</a></li>
+                        </ul>
                         </ul>
                         </div>
                     </div>
