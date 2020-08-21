@@ -82,35 +82,6 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url().'admin/sejarah'?>">
-            <i class="fa fa-shield"></i> <span>Sejarah</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/fasilitas'?>">
-            <i class="fa fa-institution"></i> <span>Fasilitas</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/acara'?>">
-            <i class="fa fa-gift"></i> <span>Acara</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        
-                
-        <li>
           <a href="<?php echo base_url().'admin/inbox'?>">
             <i class="fa fa-envelope"></i> <span>Inbox</span>
             <span class="pull-right-container">
