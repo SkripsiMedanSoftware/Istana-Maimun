@@ -44,7 +44,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Menu Utama</li>
-        <li class="active">
+        <li>
           <a href="<?php echo base_url().'admin/dashboard'?>">
             <i class="fa fa-archive"></i> <span>Dashboard</span>
             <span class="pull-right-container">
@@ -80,35 +80,6 @@
           </a>
         </li>
         <li>
-          <a href="<?php echo base_url().'admin/sejarah'?>">
-            <i class="fa fa-shield"></i> <span>Sejarah</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/fasilitas'?>">
-            <i class="fa fa-institution"></i> <span>Fasilitas</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        <li>
-          <a href="<?php echo base_url().'admin/acara'?>">
-            <i class="fa fa-gift"></i> <span>Acara</span>
-            <span class="pull-right-container">
-              <small class="label pull-right"></small>
-            </span>
-          </a>
-        </li>
-
-        
-                
-        <li>
           <a href="<?php echo base_url().'admin/inbox'?>">
             <i class="fa fa-envelope"></i> <span>Inbox</span>
             <span class="pull-right-container">
@@ -117,7 +88,7 @@
           </a>
         </li>
 
-           <li>
+           <li class="active">
           <a href="<?php echo base_url().'admin/tiket'?>">
             <i class="fa fa-ticket"></i> <span>Tiket</span>
             <span class="pull-right-container">
@@ -125,9 +96,6 @@
             </span>
           </a>
         </li>
-
-        
-
          <li>
           <a href="<?php echo base_url().'admin/login/logout'?>">
             <i class="fa fa-sign-out"></i> <span>Log Out</span>
@@ -167,48 +135,26 @@
               <table id="example1" class="table table-striped" style="font-size:15px;">
                 
                 <thead>
-                  <th style="text-align: center;">BUKTI</th>
-                  <th style="text-align: center">NAMA</th>
-                  <th style="text-align: center">KONTAK</th>
-                  <th style="text-align: center">TANGGAL KEDATANGAN</th>
-                  <th style="text-align: center">DEWASA</th>
-                  <th style="text-align: center">PELAJAR</th>
-                  <th style="text-align:center;">Hapus</th>
+                  <th style="text-align: center;">No</th>
+                  <th style="text-align: center">Golongan</th>
+                  <th style="text-align: center">Harga</th>
                 </thead>
                 
                 <tbody>
                   <?php
-                    $no=0;
+                    $no=1;
                     foreach ($data->result_array() as $i) :
-                       $no++;
-                       $id=$i['tiket_id'];
-                       $bukti=$i['bukti_bayar'];
-                       $nama=$i['tiket_nama'];
-                       $kontak=$i['tiket_kontak'];
-                       $tanggal=$i['tiket_tanggal'];
-                       $dewasa=$i['tiket_dewasa'];
-                       $pelajar=$i['tiket_pelajar'];
-                       
-                    ?>
-                <tr>
-                  <?php if(empty($bukti)):?>
-                  <td><img width="250" height="200" class="img" src="<?php echo base_url().'assets/images/resi1.png';?>"  ></td>
-                  <?php else:?>
-                  <td><img width="200" height="200" class="img" src="<?php echo base_url().'assets/images/resi1.png';?>"  ></td>
-                  <?php endif;?>
-                  <td style="text-align: center"><?php echo $nama;?></td>
-                  <td style="text-align: center"><?php echo $kontak;?></td>
-                  <td style="text-align: center"><?php echo $tanggal;?></td>
-                  <td style="text-align: center"><?php echo $dewasa;?></td>
-                  <td style="text-align: center"><?php echo $pelajar;?></td>
-                  
 
-                  <td style="text-align:center;">
-                        <!--<a class="btn" data-toggle="modal" data-target="#ModalEdit<?php echo $id;?>"><span class="fa fa-pencil"></span></a>-->
-                        <a class="btn" data-toggle="modal" data-target="#ModalHapus<?php echo $id;?>"><span class="fa fa-trash"></span></a>
-                  </td>
+                  ?>
+                <tr>
+                  <td style="text-align: center"><?php echo $no;?></td>
+                  <td style="text-align: center"><?php echo $i['tiket_golongan'];?></td>
+                  <td style="text-align: center"><?php echo $i['harga_tiket'];?></td>
                 </tr>
-        <?php endforeach;?>
+        <?php 
+        $no++;
+      endforeach;
+        ?>
                 </tbody>
               </table>
             </div>

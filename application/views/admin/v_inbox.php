@@ -47,7 +47,7 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">Menu Utama</li>
-        <li class="active">
+        <li>
           <a href="<?php echo base_url().'admin/dashboard'?>">
             <i class="fa fa-archive"></i> <span>Dashboard</span>
             <span class="pull-right-container">
