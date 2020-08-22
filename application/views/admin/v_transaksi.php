@@ -159,7 +159,7 @@
             <td><?php echo $value['jumlah_tiket'] ?></td>
             <td><?php echo $value['dewasa'] ?></td>
             <td><?php echo $value['pelajar'] ?></td>
-            <td><a href="<?php echo !empty($value['bukti_pembayaran'])?base_url('assets/images/'.$value['bukti_pembayaran']).' target="_blank"':'#' ?>">Klik Disini</a></td>
+            <td><a href="<?php echo !empty($value['bukti_pembayaran'])?base_url('assets/images/'.$value['bukti_pembayaran']):'#' ?>" target="_blank">Klik Disini</a></td>
           </tr>
         <?php 
         $i++;

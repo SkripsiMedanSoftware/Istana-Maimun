@@ -152,16 +152,31 @@
     </div>
 </section> -->
 <section class="our-teachers">
+    <?php if ($this->router->fetch_method() == 'index'): ?>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-7">
+               <h2>Selamat Datang</h2>
+               <p>Website Resmi Istana Maimun </p>
+
+            </div>
+            <div class="col-md-4">
+                <img src="<?php echo base_url().'theme/images/sultan.png'?>" class="img-fluid about-img" alt="#">
+            </div>
+        </div>
+    </div>
+    <?php else: ?>
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <h2 class="mb-5">Istana Maimun - <?php echo (!empty($page))?$page[0]['judul']:'';?></h2>
+                <h2 class="mb-5">Istana Maimun - <?php echo (!empty($page))?$page['judul']:'';?></h2>
             </div>
         </div>
         <div class="container">
-            <?php echo (!empty($page))?$page[0]['content']:'';?>
+            <?php echo (!empty($page))?$page['konten']:'';?>
         </div>
     </div>
+    <?php endif; ?>
 </section>
 <!--//END ABOUT -->
 
